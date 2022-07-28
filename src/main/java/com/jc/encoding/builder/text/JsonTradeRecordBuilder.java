@@ -1,10 +1,10 @@
 package com.jc.encoding.builder.text;
 
 import com.google.gson.Gson;
-import com.jc.encoding.builder.ISerializable;
+import com.jc.encoding.builder.Converter;
 import com.jc.model.dto.TradeDto;
 
-public class JsonTradeRecordBuilder implements ISerializable<TradeDto> {
+public class JsonTradeRecordBuilder implements Converter<TradeDto> {
 
     @Override
     public TradeDto newTrade(final TradeDto tradeDto) {

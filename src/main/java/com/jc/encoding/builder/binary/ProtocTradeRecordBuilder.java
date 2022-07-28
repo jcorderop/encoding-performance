@@ -1,14 +1,13 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.ISerializable;
+import com.jc.encoding.builder.Converter;
 import com.jc.model.dto.TradeDto;
-import com.jc.model.proto.Trade;
 import com.jc.model.proto.TradeProtoc;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-public class ProtocTradeRecordBuilder implements ISerializable<TradeProtoc>  {
+public class ProtocTradeRecordBuilder implements Converter<TradeProtoc> {
 
     @Override
     public TradeProtoc newTrade(final TradeDto tradeDto) {

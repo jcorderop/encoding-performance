@@ -1,9 +1,9 @@
 package com.jc.encoding.builder.text;
 
-import com.jc.encoding.builder.ISerializable;
+import com.jc.encoding.builder.Converter;
 import com.jc.model.dto.TradeDto;
 
-public class CSVTradeRecordBuilder implements ISerializable<TradeDto> {
+public class CSVTradeRecordBuilder implements Converter<TradeDto> {
 
     public static final String SEPARATOR = ";";
 

@@ -1,9 +1,6 @@
 package com.jc.encoding;
 
-import com.jc.encoding.builder.binary.ChronicleTradeRecordBuilder;
-import com.jc.encoding.builder.binary.AvroTradeRecordBuilder;
-import com.jc.encoding.builder.binary.ProtocTradeRecordBuilder;
-import com.jc.encoding.builder.binary.SbeTradeRecordBuilder;
+import com.jc.encoding.builder.binary.*;
 import com.jc.encoding.builder.text.CSVTradeRecordBuilder;
 import com.jc.encoding.builder.text.JsonTradeRecordBuilder;
 import com.jc.model.dto.TradeDto;
@@ -61,6 +58,13 @@ class EncodingApplicationTests {
                 sbe::toBytes,
                 sbe::fromBytes);
 
+        var apache = new SerializableRecordBuilder();
+        process("apache",
+                trades.stream(),
+                apache::newTrade,
+                apache::toBytes,
+                apache::fromBytes);
+
         var csv = new CSVTradeRecordBuilder();
         process("csv",
                 trades.stream(),
@@ -84,9 +88,9 @@ class EncodingApplicationTests {
                             Function<byte[], T> fromBytes) {
         trades.map(recordBuilder)
                 .map(toBytes)
-                .peek(x -> System.out.println(String.format("(%s) -> Size %s Bytes", formatType, x.length)))
+                .peek(x -> System.out.printf("(%s) -> Size %s Bytes%n", formatType, x.length))
                 .map(fromBytes)
-                .forEach(o -> System.out.println(o));
+                .forEach(System.out::println);
 
         System.out.println();
     }

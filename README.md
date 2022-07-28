@@ -58,7 +58,7 @@ To create the classes based on Trade.avsc
 
     mvn clean compile
 
-### Results
+# Results
     
     (Avro) -> Size 44 Bytes
     {"tradeId": 4879908246954430230, "customerId": -4250350058930287262, "qty": 100, "tradeType": "Buy", "symbol": "GOOGL", "exchange": "NYSE"}
@@ -83,13 +83,17 @@ To create the classes based on Trade.avsc
     qty: 100
     symbol: "GOOGL"
     exchange: "NYSE"
-    
-    
+
     (sbe) -> Size 50 Bytes
     [SBETrade](sbeTemplateId=2|sbeSchemaId=1|sbeSchemaVersion=0|sbeBlockLength=25):tradeId=4879908246954430230|customerId=-4250350058930287262|qty=100|tradeType=Buy|symbol='GOOGL'|exchange='NYSE'
     (sbe) -> Size 50 Bytes
     [SBETrade](sbeTemplateId=2|sbeSchemaId=1|sbeSchemaVersion=0|sbeBlockLength=25):tradeId=-1449663617414539192|customerId=3834443944602810970|qty=100|tradeType=Buy|symbol='GOOGL'|exchange='NYSE'
-    
+
+    (apache) -> Size 299 Bytes
+    com.jc.model.dto.TradeDto@5cdd09b1
+    (apache) -> Size 299 Bytes
+    com.jc.model.dto.TradeDto@7e8dcdaa
+
     (csv) -> Size 59 Bytes
     com.jc.model.dto.TradeDto@4535b6d5
     (csv) -> Size 59 Bytes
@@ -98,4 +102,3 @@ To create the classes based on Trade.avsc
     (json) -> Size 128 Bytes
     com.jc.model.dto.TradeDto@31e4bb20
     (json) -> Size 128 Bytes
-com.jc.model.dto.TradeDto@18cebaa5

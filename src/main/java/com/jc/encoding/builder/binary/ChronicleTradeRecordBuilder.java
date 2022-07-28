@@ -1,6 +1,6 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.ISerializable;
+import com.jc.encoding.builder.Converter;
 import com.jc.model.dto.TradeDto;
 import net.openhft.chronicle.bytes.Bytes;
 import net.openhft.chronicle.wire.RawWire;
@@ -8,7 +8,7 @@ import net.openhft.chronicle.wire.Wire;
 
 import java.nio.ByteBuffer;
 
-public class ChronicleTradeRecordBuilder implements ISerializable<Object> {
+public class ChronicleTradeRecordBuilder implements Converter<Object> {
 
     @Override
     public Object newTrade(final TradeDto tradeDto) {

@@ -1,6 +1,6 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.ISerializable;
+import com.jc.encoding.builder.Converter;
 import com.jc.model.dto.TradeDto;
 import com.jc.model.sbe.*;
 import org.agrona.MutableDirectBuffer;
@@ -8,7 +8,7 @@ import org.agrona.concurrent.UnsafeBuffer;
 
 import java.nio.ByteBuffer;
 
-public class SbeTradeRecordBuilder implements ISerializable<Object> {
+public class SbeTradeRecordBuilder implements Converter<Object> {
 
     @Override
     public Object newTrade(final TradeDto tradeDto) {
@@ -18,14 +18,13 @@ public class SbeTradeRecordBuilder implements ISerializable<Object> {
         final ByteBuffer buffer = ByteBuffer.allocate(100);
         final MutableDirectBuffer mutableBuffer = new UnsafeBuffer(buffer);
         tradeEncoder.wrapAndApplyHeader(mutableBuffer, 0, messageHeaderEncoder);
-        final SBETradeEncoder te = tradeEncoder
+        return tradeEncoder
                 .tradeId(tradeDto.getTradeId())
                 .customerId(tradeDto.getCustomerId())
                 .tradeType(SBETradeType.valueOf(tradeDto.getTradeType().name()))
                 .qty(tradeDto.getQty())
                 .symbol(tradeDto.getSymbol())
                 .exchange(tradeDto.getExchange());
-        return te;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.ISerializable;
+import com.jc.encoding.builder.Converter;
 import com.jc.model.avro.Trade;
 import com.jc.model.avro.TradeType;
 import com.jc.model.dto.TradeDto;
@@ -8,11 +8,11 @@ import com.jc.model.dto.TradeDto;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-public class AvroTradeRecordBuilder implements ISerializable<Trade>  {
+public class AvroTradeRecordBuilder implements Converter<Trade> {
 
     @Override
     public Trade newTrade(final TradeDto tradeDto) {
-        Trade trade = Trade.newBuilder()
+        return Trade.newBuilder()
                 .setTradeId(tradeDto.getTradeId())
                 .setCustomerId(tradeDto.getCustomerId())
                 .setExchange(tradeDto.getExchange())
@@ -20,7 +20,6 @@ public class AvroTradeRecordBuilder implements ISerializable<Trade>  {
                 .setSymbol(tradeDto.getSymbol())
                 .setQty(tradeDto.getQty())
                 .build();
-        return trade;
     }
 
     @Override
