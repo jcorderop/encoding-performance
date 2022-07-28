@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package encoding;
+
+option java_multiple_files = true;
+option java_package = "com.jc.model.proto";
+option java_outer_classname = "Trade";
+
+message TradeProtoc {
+  int64 tradeId = 1;
+  int64 customerId = 2;
+  int64 qty = 3;
+  TradeType tradeType = 4;
+  string symbol = 5;
+  string exchange = 6;
+
+  enum TradeType {
+    Buy = 0;
+    Sell = 1;
+  }
+}
+
