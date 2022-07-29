@@ -37,12 +37,19 @@ class EncodingApplicationTests {
                 avro::toBytes,
                 avro::fromBytes);
 
-       var chronocle = new ChronicleTradeRecordBuilder();
-       process("chronicle",
+       var chronocleByteBuffer = new ChronicleByteBufferTradeRecordBuilder();
+       process("chronicleByteBuffer",
                trades.stream(),
-               chronocle::newTrade,
-               chronocle::toBytes,
-               chronocle::fromBytes);
+               chronocleByteBuffer::newTrade,
+               chronocleByteBuffer::toBytes,
+               chronocleByteBuffer::fromBytes);
+
+        var chronocleWire = new ChronicleWireTradeRecordBuilder();
+        process("chronocleWire",
+                trades.stream(),
+                chronocleWire::newTrade,
+                chronocleWire::toBytes,
+                chronocleWire::fromBytes);
 
         var proto = new ProtocTradeRecordBuilder();
         process("proto",

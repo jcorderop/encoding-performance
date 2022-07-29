@@ -8,28 +8,27 @@ import net.openhft.chronicle.wire.Wire;
 
 import java.nio.ByteBuffer;
 
-public class ChronicleTradeRecordBuilder implements Converter<Object> {
+public class ChronicleWireTradeRecordBuilder implements Converter<Wire> {
 
     @Override
-    public Object newTrade(final TradeDto tradeDto) {
-        final Bytes<ByteBuffer> bytes = Bytes.elasticByteBuffer();
-        final Wire wire = createWriteFormat(bytes);
+    public Wire newTrade(final TradeDto tradeDto) {
+        final Wire wire = createWriteFormat(Bytes.elasticByteBuffer());
         wire.write(() -> "tradeId").int64(tradeDto.getTradeId())
                 .write(() -> "customerId").int64(tradeDto.getCustomerId())
                 .write(() -> "exchange").text(tradeDto.getExchange())
                 .write(() -> "tradeType").text(tradeDto.getTradeType().name())
                 .write(() -> "symbol").text(tradeDto.getSymbol())
                 .write(() -> "qty").int32(tradeDto.getQty());
-        return bytes;
+        return wire;
     }
 
     @Override
-    public byte[] toBytes(final Object encoder) {
-        return ((Bytes<ByteBuffer>) encoder).toByteArray();
+    public byte[] toBytes(final Wire o) {
+        return o.<ByteBuffer>bytes().toByteArray();
     }
 
     @Override
-    public Object fromBytes(final byte[] b) {
+    public Wire fromBytes(final byte[] b) {
         return createWriteFormat(Bytes
                 .elasticByteBuffer(b.length)
                 .write(b));
