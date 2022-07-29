@@ -3,6 +3,7 @@ package com.jc.encoding;
 import com.jc.encoding.builder.binary.*;
 import com.jc.encoding.builder.text.CSVTradeRecordBuilder;
 import com.jc.encoding.builder.text.JsonTradeRecordBuilder;
+import com.jc.encoding.builder.text.JsonVertxTradeRecordBuilder;
 import com.jc.model.dto.TradeDto;
 import org.junit.jupiter.api.Test;
 
@@ -85,6 +86,13 @@ class EncodingApplicationTests {
                 json::newTrade,
                 json::toBytes,
                 json::fromBytes);
+
+        var jsonVertx = new JsonVertxTradeRecordBuilder();
+        process("jsonVertx",
+                trades.stream(),
+                jsonVertx::newTrade,
+                jsonVertx::toBytes,
+                jsonVertx::fromBytes);
 
     }
 
