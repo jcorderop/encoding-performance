@@ -13,7 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 //@SpringBootTest
-class EncodingApplicationTests {
+class EncodingTests {
 
     @Test
     void contextLoads() {
@@ -45,12 +45,26 @@ class EncodingApplicationTests {
                chronocleByteBuffer::toBytes,
                chronocleByteBuffer::fromBytes);
 
-        var chronocleWire = new ChronicleWireTradeRecordBuilder();
-        process("chronocleWire",
+        var chronocleRawWire = new ChronicleRawWireTradeRecordBuilder();
+        process("chronocleRawWire",
                 trades.stream(),
-                chronocleWire::newTrade,
-                chronocleWire::toBytes,
-                chronocleWire::fromBytes);
+                chronocleRawWire::newTrade,
+                chronocleRawWire::toBytes,
+                chronocleRawWire::fromBytes);
+
+        var chronicleBinaryWire = new ChronicleBinaryWireTradeRecordBuilder();
+        process("chronicleBinaryWire",
+                trades.stream(),
+                chronicleBinaryWire::newTrade,
+                chronicleBinaryWire::toBytes,
+                chronicleBinaryWire::fromBytes);
+
+        var chronicleTextWire = new ChronicleTextWireTradeRecordBuilder();
+        process("chronicleTextWire",
+                trades.stream(),
+                chronicleTextWire::newTrade,
+                chronicleTextWire::toBytes,
+                chronicleTextWire::fromBytes);
 
         var proto = new ProtocTradeRecordBuilder();
         process("proto",

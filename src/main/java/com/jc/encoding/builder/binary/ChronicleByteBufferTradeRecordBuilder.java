@@ -14,11 +14,11 @@ public class ChronicleByteBufferTradeRecordBuilder implements Converter<Bytes<By
     public Bytes<ByteBuffer> newTrade(final TradeDto tradeDto) {
         final Bytes<ByteBuffer> bytes = Bytes.elasticByteBuffer();
         final Wire wire = createWriteFormat(bytes);
-        wire.write(() -> "tradeId").int64(tradeDto.getTradeId())
-                .write(() -> "customerId").int64(tradeDto.getCustomerId())
-                .write(() -> "exchange").text(tradeDto.getExchange())
-                .write(() -> "tradeType").text(tradeDto.getTradeType().name())
-                .write(() -> "symbol").text(tradeDto.getSymbol())
+        wire.write(() -> "oid").int64(tradeDto.getTradeId())
+                .write(() -> "cid").int64(tradeDto.getCustomerId())
+                .write(() -> "ex").text(tradeDto.getExchange())
+                .write(() -> "ty").text(tradeDto.getTradeType().name())
+                .write(() -> "s").text(tradeDto.getSymbol())
                 .write(() -> "qty").int32(tradeDto.getQty());
         return bytes;
     }

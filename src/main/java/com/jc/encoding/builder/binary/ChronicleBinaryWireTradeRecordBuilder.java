@@ -3,12 +3,12 @@ package com.jc.encoding.builder.binary;
 import com.jc.encoding.builder.Converter;
 import com.jc.model.dto.TradeDto;
 import net.openhft.chronicle.bytes.Bytes;
-import net.openhft.chronicle.wire.RawWire;
+import net.openhft.chronicle.wire.BinaryWire;
 import net.openhft.chronicle.wire.Wire;
 
 import java.nio.ByteBuffer;
 
-public class ChronicleWireTradeRecordBuilder implements Converter<Wire> {
+public class ChronicleBinaryWireTradeRecordBuilder implements Converter<Wire> {
 
     @Override
     public Wire newTrade(final TradeDto tradeDto) {
@@ -35,6 +35,6 @@ public class ChronicleWireTradeRecordBuilder implements Converter<Wire> {
     }
 
     private static Wire createWriteFormat(final Bytes<ByteBuffer> bytes) {
-        return new RawWire(bytes);
+        return new BinaryWire(bytes);
     }
 }

@@ -49,37 +49,30 @@
             <scope>test</scope>
         </dependency>
 
-
         <!--Avro -->
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
             <version>${avro.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro-compiler</artifactId>
             <version>${avro.version}</version>
         </dependency>
-
         <!-- Avro -->
 
         <!-- SBE -->
-
         <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-all</artifactId>
             <version>${sbe.version}</version>
         </dependency>
-
-
         <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
             <version>${sbe.version}</version>
         </dependency>
-
         <!-- SBE end -->
 
         <!-- Json -->
@@ -91,21 +84,14 @@
         <!-- Json End -->
 
         <!-- chronicle Start -->
-
-
-
         <dependency>
             <groupId>net.openhft</groupId>
             <artifactId>chronicle-wire</artifactId>
             <version>2.23ea27</version>
         </dependency>
-
-
         <!-- chronicle End -->
 
-
         <!-- proto Start -->
-
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
@@ -116,23 +102,13 @@
             <artifactId>protobuf-java-util</artifactId>
             <version>3.21.4</version>
         </dependency>
-
         <!-- proto End -->
 
         <!-- vertx jackson Start -->
-
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.3</version>
-        </dependency>
-
-
         <!-- vertx jackson End -->
     </dependencies>
 
