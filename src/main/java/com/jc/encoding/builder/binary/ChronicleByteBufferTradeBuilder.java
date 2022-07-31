@@ -1,6 +1,6 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.Converter;
+import com.jc.encoding.builder.TradeConverter;
 import com.jc.model.dto.TradeDto;
 import net.openhft.chronicle.bytes.Bytes;
 import net.openhft.chronicle.wire.RawWire;
@@ -8,7 +8,7 @@ import net.openhft.chronicle.wire.Wire;
 
 import java.nio.ByteBuffer;
 
-public class ChronicleByteBufferTradeRecordBuilder implements Converter<Bytes<ByteBuffer>> {
+public class ChronicleByteBufferTradeBuilder implements TradeConverter<Bytes<ByteBuffer>> {
 
     @Override
     public Bytes<ByteBuffer> newTrade(final TradeDto tradeDto) {

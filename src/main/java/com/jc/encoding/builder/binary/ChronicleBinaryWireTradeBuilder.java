@@ -1,18 +1,18 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.Converter;
+import com.jc.encoding.builder.TradeConverter;
 import com.jc.model.dto.TradeDto;
 import net.openhft.chronicle.bytes.Bytes;
-import net.openhft.chronicle.wire.TextWire;
+import net.openhft.chronicle.wire.BinaryWire;
 import net.openhft.chronicle.wire.Wire;
 
 import java.nio.ByteBuffer;
 
-public class ChronicleTextWireTradeRecordBuilder implements Converter<Wire> {
+public class ChronicleBinaryWireTradeBuilder implements TradeConverter<Wire> {
 
     @Override
     public Wire newTrade(final TradeDto tradeDto) {
-        final Wire wire = createWriteFormat(Bytes.allocateElasticOnHeap());
+        final Wire wire = createWriteFormat(Bytes.elasticByteBuffer());
         wire.write(() -> "tradeId").int64(tradeDto.getTradeId())
                 .write(() -> "customerId").int64(tradeDto.getCustomerId())
                 .write(() -> "exchange").text(tradeDto.getExchange())
@@ -29,10 +29,12 @@ public class ChronicleTextWireTradeRecordBuilder implements Converter<Wire> {
 
     @Override
     public Wire fromBytes(final byte[] b) {
-        return createWriteFormat(Bytes.allocateDirect(b));
+        return createWriteFormat(Bytes
+                .elasticByteBuffer(b.length)
+                .write(b));
     }
 
-    private static Wire createWriteFormat(final Bytes<byte[]> bytes) {
-        return new TextWire(bytes);
+    private static Wire createWriteFormat(final Bytes<ByteBuffer> bytes) {
+        return new BinaryWire(bytes);
     }
 }

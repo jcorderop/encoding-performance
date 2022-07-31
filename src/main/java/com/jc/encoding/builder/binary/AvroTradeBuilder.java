@@ -1,6 +1,6 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.Converter;
+import com.jc.encoding.builder.TradeConverter;
 import com.jc.model.avro.Trade;
 import com.jc.model.avro.TradeType;
 import com.jc.model.dto.TradeDto;
@@ -8,7 +8,7 @@ import com.jc.model.dto.TradeDto;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-public class AvroTradeRecordBuilder implements Converter<Trade> {
+public class AvroTradeBuilder implements TradeConverter<Trade> {
 
     @Override
     public Trade newTrade(final TradeDto tradeDto) {

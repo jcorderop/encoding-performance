@@ -1,9 +1,9 @@
 package com.jc.encoding.builder.text;
 
-import com.jc.encoding.builder.Converter;
+import com.jc.encoding.builder.TradeConverter;
 import com.jc.model.dto.TradeDto;
 
-public class CSVTradeRecordBuilder implements Converter<TradeDto> {
+public class CSVTradeBuilder implements TradeConverter<TradeDto> {
 
     public static final String SEPARATOR = ";";
 

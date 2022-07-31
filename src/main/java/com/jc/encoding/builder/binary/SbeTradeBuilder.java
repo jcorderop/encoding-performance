@@ -1,6 +1,6 @@
 package com.jc.encoding.builder.binary;
 
-import com.jc.encoding.builder.Converter;
+import com.jc.encoding.builder.TradeConverter;
 import com.jc.model.dto.TradeDto;
 import com.jc.model.sbe.*;
 import org.agrona.MutableDirectBuffer;
@@ -8,7 +8,7 @@ import org.agrona.concurrent.UnsafeBuffer;
 
 import java.nio.ByteBuffer;
 
-public class SbeTradeRecordBuilder implements Converter<Object> {
+public class SbeTradeBuilder implements TradeConverter<Object> {
 
     @Override
     public Object newTrade(final TradeDto tradeDto) {
