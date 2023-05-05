@@ -106,4 +106,4 @@ To create the classes based on Trade.avsc
 
 # Help
 
-https://github.com/jcorderop/exchange-core
+https://github.com/exchange-core/exchange-core
