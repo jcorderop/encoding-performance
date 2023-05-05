@@ -103,3 +103,7 @@ To create the classes based on Trade.avsc
 * latency in ms for every 5M
 
 ![img.png](img.png)
+
+# Help
+
+https://github.com/jcorderop/exchange-core
